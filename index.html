@@ -14,7 +14,7 @@
       <button class="avater header__button-profile">
         <!-- img の width, height は 親要素 or className で css 指定する -->
         <!-- CSSはマジックナンバーが生まれやすい。値を指定しないのが一番。inherit, center, 100% 使わなければいけない時は変数化 -->
-        <!-- img の alt の話 -->
+        <!-- img の alt は 代替テキストそこにあるimgの代わりに表示された時にコンテンツが成立するものを設定 -->
         <img src="https://placehold.jp/150x150.png" alt="プロフィールを表示する" width="30" height="30">
       </button>
       <input class="input header__input-search" type="search" name="room_search" placeholder="検索">
@@ -26,7 +26,7 @@
     </div>
 
     <nav class="nav">
-      <!-- セマンティクス的には button にすべき。a にすべきか、button はcss 的に扱いづらい。a だと preventDefault が必要。 -->
+      <!-- セマンティクス的には button にすべき。button はcss 的に扱いづらいので a にすることも。a だと preventDefault が必要。 -->
       <ul class="nav__items">
         <!-- ブラウザのデフォルトスタイルによらず、見た目は class で設定する -->
         <li class="nav__item nav__item--active"><button class="nav__button">メッセージ</button></li>
