@@ -1,196 +1,94 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>Messenger</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Messenge Applicarion</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
-  <link rel="stylesheet" href="./styles.css">
   <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
 </head>
 <body>
   <header class="header">
+    <h1 class="header__heading">Chats</h1>
+    <button class="header__profile icon-button">
+      <img class="avater" src="https://placehold.jp/150x150.png" alt="プロフィールを表示する">
+    </button>
     <div class="header__toolbar">
-      <button class="header__button-profile">
-        <!-- img の width, height は 親要素 or className で css 指定する -->
-        <!-- CSSはマジックナンバーが生まれやすい。値を指定しないのが一番。inherit, center, 100% 使わなければいけない時は変数化 -->
-        <!-- img の alt は 代替テキストそこにあるimgの代わりに表示された時にコンテンツが成立するものを設定 -->
-        <img class="avater" src="https://placehold.jp/150x150.png" alt="プロフィールを表示する">
-      </button>
-      <input class="input header__input-search" type="search" name="room_search" placeholder="検索">
-      <!-- アクセシビリティを担保するには aria-label がベスト -->
-      <button class="header__button-create">
+      <button class="icon-button">
         <i class="fas fa-plus-square"></i>
-        <span>新規追加</span>
+        <span>写真を追加する</span>
+      </button>
+      <button class="icon-button">
+        <i class="fas fa-plus-square"></i>
+        <span>友達を選んでメッセージを送信する</span>
       </button>
     </div>
-
-    <nav class="nav">
-      <!-- セマンティクス的には button にすべき。button はcss 的に扱いづらいので a にすることも。a だと preventDefault が必要。 -->
-      <ul class="nav__items">
-        <!-- ブラウザのデフォルトスタイルによらず、見た目は class で設定する -->
-        <li class="nav__item nav__item--active"><button class="nav__button">メッセージ</button></li>
-        <li class="nav__item"><button class="nav__button">オンライン中</button></li>
-        <li class="nav__item"><button class="nav__button">グループ</button></li>
-      </ul>
-    </nav>
+    <div class="room-search">
+      <form action="" class="room-search-form">
+        <fieldset>
+          <legend>メッセージルーム検索</legend>
+          <input class="input" type="search" name="room-search" placeholder="検索ワードを入力">
+          <input class="submit" type="submit" value="検索する">
+        </fieldset>
+      </form>
+    </div>
   </header>
 
   <main>
     <section class="online-members">
       <h1>オンライン中のメンバー</h1>
-      <ol class="online-members__items">
-        <li class="online-members__item">
-          <a href="">
-            <img class="avater avater--middle" src="https://placehold.jp/150x150.png" alt="プロフィール画像" width="56" height="56">
-            <span class="online-members__name">雄大</span>
-          </a>
-        </li>
-        <li class="online-members__item">
-          <a href="">
-            <img class="avater avater--middle" src="https://placehold.jp/150x150.png" alt="プロフィール画像" width="56" height="56">
-            <span class="online-members__name">雄大</span>
-          </a>
-        </li>
-        <li class="online-members__item">
-          <a href="">
-            <img class="avater avater--middle" src="https://placehold.jp/150x150.png" alt="プロフィール画像" width="56" height="56">
-            <span class="online-members__name">雄大</span>
-          </a>
+      <button class="icon-button">
+        <i class="fas fa-plus-square"></i>
+        <span>ストーリーズを追加</span>
+      </button>
+      <ol class="online-members-list">
+        <li class="online-members-item">
+          <button class="member-button">
+            <img class="avater avater--middle" src="https://placehold.jp/150x150.png" alt="" width="56" height="56">
+            <span class="member-name">雄大</span>
+          </button>
         </li>
       </ol>
     </section>
 
     <section class="rooms">
       <h1>メッセージグループ一覧</h1>
-      <ol>
-        <li class="rooms__item">
-          <a href="" class="rooms__link">
-            <img class="avater avater--small" src="https://loremflickr.com/200/200?4" alt="プロフィール画像" width="48" height="48">
-            <div class="rooms__label">
-              <h2 class="rooms__name">メッセージグループ1</h2>
-              <span class="rooms__last-message">テキストテキスト</span>
-              <span class="rooms__last-message-date">2月1日</span>
+      <ol class="rooms-list">
+        <li class="room">
+          <a href="/rooms/:roomId">
+            <img class="avater" src="https://loremflickr.com/200/200?4" alt="" width="48" height="48">
+            <div class="room-name">
+              <h2 class="room-name">メッセージグループ1</h2>
+              <span class="room-last-message">テキストテキスト</span>
+              <span class="room-last-message-posted-at">2月1日</span>
             </div>
           </a>
-        </li>
-        <li class="rooms__item">
-          <a href="" class="rooms__link">
-            <img class="avater avater--small" src="https://loremflickr.com/200/200?4" alt="プロフィール画像" width="48" height="48">
-            <div class="rooms__label">
-              <h2 class="rooms__name">メッセージグループ1</h2>
-              <span class="rooms__last-message">テキストテキスト</span>
-              <span class="rooms__last-message-date">2月1日</span>
-            </div>
-          </a>
-        </li>
-        <li class="rooms__item">
-          <a href="" class="rooms__link">
-            <img class="avater avater--small" src="https://loremflickr.com/200/200?4" alt="プロフィール画像" width="48" height="48">
-            <div class="rooms__label">
-              <h2 class="rooms__name">メッセージグループ1</h2>
-              <span class="rooms__last-message">テキストテキスト</span>
-              <span class="rooms__last-message-date">2月1日</span>
-            </div>
-          </a>
-        </li>
-        <li class="rooms__item">
-          <a href="" class="rooms__link">
-            <img class="avater avater--small" src="https://loremflickr.com/200/200?4" alt="プロフィール画像" width="48" height="48">
-            <div class="rooms__label">
-              <h2 class="rooms__name">メッセージグループ1</h2>
-              <span class="rooms__last-message">テキストテキスト</span>
-              <span class="rooms__last-message-date">2月1日</span>
-            </div>
-          </a>
-        </li>
-        <li class="rooms__item">
-          <a href="" class="rooms__link">
-            <img class="avater avater--small" src="https://loremflickr.com/200/200?4" alt="プロフィール画像" width="48" height="48">
-            <div class="rooms__label">
-              <h2 class="rooms__name">メッセージグループ1</h2>
-              <span class="rooms__last-message">テキストテキスト</span>
-              <span class="rooms__last-message-date">2月1日</span>
-            </div>
-          </a>
-        </li>
-        <li class="rooms__item">
-          <a href="" class="rooms__link">
-            <img class="avater avater--small" src="https://loremflickr.com/200/200?4" alt="プロフィール画像" width="48" height="48">
-            <div class="rooms__label">
-              <h2 class="rooms__name">メッセージグループ1</h2>
-              <span class="rooms__last-message">テキストテキスト</span>
-              <span class="rooms__last-message-date">2月1日</span>
-            </div>
-          </a>
-        </li>
-        <li class="rooms__item">
-          <a href="" class="rooms__link">
-            <img class="avater avater--small" src="https://loremflickr.com/200/200?4" alt="プロフィール画像" width="48" height="48">
-            <div class="rooms__label">
-              <h2 class="rooms__name">メッセージグループ1</h2>
-              <span class="rooms__last-message">テキストテキスト</span>
-              <span class="rooms__last-message-date">2月1日</span>
-            </div>
-          </a>
-        </li>
-        <li class="rooms__item">
-          <a href="" class="rooms__link">
-            <img class="avater avater--small" src="https://loremflickr.com/200/200?4" alt="プロフィール画像" width="48" height="48">
-            <div class="rooms__label">
-              <h2 class="rooms__name">メッセージグループ1</h2>
-              <span class="rooms__last-message">テキストテキスト</span>
-              <span class="rooms__last-message-date">2月1日</span>
-            </div>
-          </a>
-        </li>
-        <li class="rooms__item">
-          <a href="" class="rooms__link">
-            <img class="avater avater--small" src="https://loremflickr.com/200/200?4" alt="プロフィール画像" width="48" height="48">
-            <div class="rooms__label">
-              <h2 class="rooms__name">メッセージグループ1</h2>
-              <span class="rooms__last-message">テキストテキスト</span>
-              <span class="rooms__last-message-date">2月1日</span>
-            </div>
-          </a>
+          <button class="icon-button">
+            <i class="fas fa-tel"></i>
+            <span>雄大さんに電話をかける</span>
+          </button>
+          <span class="room-unread">未読メッセージがあります</span>
+          <ol class="room-members">
+            <li class="room-member">
+              <img class="avater" src="https://loremflickr.com/200/200?5" alt="" width="20" height="20">
+            </li>
+            <li class="room-member">
+              <img class="avater" src="https://loremflickr.com/200/200?6" alt="" width="20" height="20">
+            </li>
+          </ol>
         </li>
       </ol>
     </section>
   </main>
 
   <footer class="footer">
-    <ul class="footer__items">
-      <li class="footer__item">
-        <a href="">
-          <i class="fas fa-home"></i>
-          <span class="footer__item-name">ホーム</span>
-        </a>
-      </li>
-      <li class="footer__item">
-        <a href="">
-          <i class="fas fa-phone"></i>
-          <span class="footer__item-name">通話</span>
-        </a>
-      </li>
-      <li class="footer__item">
-        <a href="">
-          <i class="fas fa-camera"></i>
-          <span class="footer__item-name">カメラ</span>
-        </a>
-      </li>
-      <li class="footer__item">
-        <a href="">
-          <i class="fas fa-users"></i>
-          <span class="footer__item-name">友達</span>
-        </a>
-      </li>
-      <li class="footer__item">
-        <a href="">
-          <i class="fas fa-gamepad"></i>
-          <span class="footer__item-name">ゲーム</span>
-        </a>
-      </li>
-    </ul>
+    <nav class="nav">
+      <ul class="navigations">
+        <li class="navigation-item navigation-item--active"><button>メッセージ</button><sup class="badge message-unread-count"></sup></li>
+        <li class="navigation-item"><button>メンバー</button><sup class="badge online-members-count"></sup></li>
+        <li class="navigation-item"><button>発見</button></li>
+      </ul>
+    </nav>
   </footer>
 </body>
 </html>
